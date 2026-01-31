@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Language Translator</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Language Translation Tool</h1>
+
+    <form method="POST">
+        <label>Enter Text:</label><br>
+        <textarea name="text" rows="5" cols="50" required></textarea>
+        <br><br>
+
+        <label>Source Language:</label>
+        <select name="source">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+        </select>
+
+        <label>Target Language:</label>
+        <select name="target">
+            <option value="hi">Hindi</option>
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+        </select>
+
+        <br><br>
+        <button type="submit">Translate</button>
+    </form>
+
+    <h2>Translated Text:</h2>
+
+    <textarea id="outputText" rows="4" cols="50" readonly>
+{{ translated_text }}
+    </textarea>
+
+    <br><br>
+
+    <button onclick="copyText()">Copy</button>
+
+
+    <script>
+    function copyText() {
+        const textArea = document.getElementById("outputText");
+        textArea.select();
+        document.execCommand("copy");
+        alert("Copied to clipboard!");
+    }
+
+</script>
+
+
+</body>
+</html>
